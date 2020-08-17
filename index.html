@@ -27,7 +27,7 @@
     />
 
     <!-- Favicons -->
-        <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico" />
 
     <!-- FONTS -->
     <link
@@ -1018,50 +1018,50 @@
         <div class="content_wrapper clearfix">
           <div class="sections_group">
             <div class="entry-content">
-                <div class="items_group clearfix">
-                    <!-- Two Third (2/3) Column -->
-                    <div class="column one column_column">
-                        <div class="column_attr" style="padding: 160px 0 0 0;">
-                          <h3 class="animate" data-anim-type="fadeInUp">News</h3>
-                          <div
-                            class="image_frame image_item no_link scale-with-grid alignnone no_border"
-                          >
-                            <div class="image_wrapper">
-                              <img
-                                class="scale-with-grid"
-                                src="images/home_tuning_sep3.png"
-                                alt=""
-                                width="193"
-                                height="4"
-                              />
-                            </div>
-                          </div>
-                          <hr class="no_line hrmargin_b_30" />
-                          <hr class="no_line" style="margin: 0 auto 50px;" />
-                          <h4>お知らせ一覧</h4>
-                        </div>
+              <div class="items_group clearfix">
+                <!-- Two Third (2/3) Column -->
+                <div class="column one column_column">
+                  <div class="column_attr" style="padding: 160px 0 0 0;">
+                    <h3 class="animate" data-anim-type="fadeInUp">News</h3>
+                    <div
+                      class="image_frame image_item no_link scale-with-grid alignnone no_border"
+                    >
+                      <div class="image_wrapper">
+                        <img
+                          class="scale-with-grid"
+                          src="images/home_tuning_sep3.png"
+                          alt=""
+                          width="193"
+                          height="4"
+                        />
                       </div>
-                      <div class="column one column_column">
-                        <ul>
-                          <?php
+                    </div>
+                    <hr class="no_line hrmargin_b_30" />
+                    <hr class="no_line" style="margin: 0 auto 50px;" />
+                    <h4>お知らせ一覧</h4>
+                  </div>
+                </div>
+                <div class="column one column_column">
+                  <ul>
+                    <?php
                                             $posts = get_posts('numberposts=5&category=1');
                                             global $post;
                                             ?>
-                          <?php
+                    <?php
                                             if($posts): foreach($posts as $post): setup_postdata($post); ?>
-                          <li>
-                            <a
-                              href="<?php the_permalink();?>"
-                              style="color: #1a1414; font-size: 16px;"
-                            >
-                              <?php the_time( 'Y/m/d' ); ?>：<?php the_title(); ?>
-                            </a>
-                          </li>
-                          <?php endforeach; endif;
+                    <li>
+                      <a
+                        href="<?php the_permalink();?>"
+                        style="color: #1a1414; font-size: 16px;"
+                      >
+                        <?php the_time( 'Y/m/d' ); ?>：<?php the_title(); ?>
+                      </a>
+                    </li>
+                    <?php endforeach; endif;
                                             ?>
-                        </ul>
-                      </div>
-                  </div>
+                  </ul>
+                </div>
+              </div>
               <div
                 class="section"
                 style="
@@ -1073,7 +1073,6 @@
                 "
               >
                 <div class="section_wrapper clearfix">
-
                   <div class="items_group clearfix">
                     <!-- Two Third (2/3) Column -->
                     <div class="column two-third column_column">
@@ -1519,14 +1518,23 @@
                     <div class="column one-second column_map tuning_map">
                       <!-- Google map area -->
                       <div class="google-map-wrapper no_border">
-<!--                        <div-->
-<!--                          class="google-map"-->
-<!--                          id="google-map-area-563cab1ac4109"-->
-<!--                          style="width: 100%; height: 650px;"-->
-<!--                        >-->
-<!--                          &nbsp;-->
-<!--                        </div>-->
-                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6136.513871186458!2d140.065099!3d39.733879!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2ed89c870699e501!2z77yI5pyJ77yJ44G-44KL44KI44GX5bel5qWt!5e0!3m2!1sja!2sus!4v1589781343664!5m2!1sja!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <!--                        <div-->
+                        <!--                          class="google-map"-->
+                        <!--                          id="google-map-area-563cab1ac4109"-->
+                        <!--                          style="width: 100%; height: 650px;"-->
+                        <!--                        >-->
+                        <!--                          &nbsp;-->
+                        <!--                        </div>-->
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6136.513871186458!2d140.065099!3d39.733879!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2ed89c870699e501!2z77yI5pyJ77yJ44G-44KL44KI44GX5bel5qWt!5e0!3m2!1sja!2sus!4v1589781343664!5m2!1sja!2sus"
+                          width="600"
+                          height="450"
+                          frameborder="0"
+                          style="border: 0;"
+                          allowfullscreen=""
+                          aria-hidden="false"
+                          tabindex="0"
+                        ></iframe>
                       </div>
                     </div>
                   </div>
