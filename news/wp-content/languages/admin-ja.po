@@ -263,7 +263,7 @@ msgstr "<a href=\"https://wordpress.org/support/article/pages-add-new-screen/\">
 
 #: wp-admin/edit-form-advanced.php:313
 msgid "<a href=\"https://wordpress.org/support/article/wordpress-editor/\">Documentation on Writing and Editing Posts</a>"
-msgstr "<a href=\"https://wordpress.org/support/article/wordpress-editor/\">投稿の制作と編集の解説</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/wordpress-editor/\">投稿の製作と編集の解説</a>"
 
 #: wp-admin/upload.php:75 wp-admin/upload.php:250
 msgid "<a href=\"https://wordpress.org/support/article/media-library-screen/\">Documentation on Media Library</a>"
