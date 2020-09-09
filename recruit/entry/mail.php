@@ -5,7 +5,7 @@
 #  PHPメールプログラム　フリー版 最終更新日2018/07/27
 #　改造や改変は自己責任で行ってください。
 #
-#  HP: http://www.php-factory.net/
+#  HP: https://www.php-factory.net/
 #
 #  重要！！サイトでチェックボックスを使用する場合のみですが。。。
 #  チェックボックスを使用する場合はinputタグに記述するname属性の値を必ず配列の形にしてください。
@@ -30,14 +30,14 @@ if ( version_compare( PHP_VERSION, '5.1.0', '>=' ) ) {//PHP5.1.0以上の場合�
 //---------------------------　必須設定　必ず設定してください　-----------------------
 
 //サイトのトップページのURL　※デフォルトでは送信完了後に「トップページへ戻る」ボタンが表示されますので
-$site_top = "/";
+$site_top = "https://maruyoshi-ironworks.com/";
 
 //管理者のメールアドレス ※メールを受け取るメールアドレス(複数指定する場合は「,」で区切ってください 例 $to = "aa@aa.aa,bb@bb.bb";)
-$to = "yamauchi-t@plus-agc.com";
+$to = "infomation@maruyoshi-ironworks.com,yamauchi-t@plus-agc.com";
 
 //自動返信メールの送信元メールアドレス
 //必ず実在するメールアドレスでかつ出来る限り設置先サイトのドメインと同じドメインのメールアドレスとすることを強く推奨します
-$from = "yamauchi-t@plus-agc.com";
+$from = "infomation@maruyoshi-ironworks.com,yamauchi-t@plus-agc.com";
 
 //フォームのメールアドレス入力箇所のname属性の値（name="○○"　の○○部分）
 $Email = "Eメール";
@@ -52,7 +52,7 @@ $Referer_check = 0;
 
 //リファラチェックを「する」場合のドメイン ※設置するサイトのドメインを指定して下さい。
 //もしこの設定が間違っている場合は送信テストですぐに気付けます。
-$Referer_check_domain = "php-factory.net";
+$Referer_check_domain = "https://maruyoshi-ironworks.com/";
 
 /*セッションによるワンタイムトークン（CSRF対策、及びスパム防止）(する=1, しない=0)
 ※ただし、この機能を使う場合は↓の送信確認画面の表示が必須です。（デフォルトではON（1）になっています）
@@ -84,7 +84,7 @@ $confirmDsp = 1;
 $jumpPage = 1;
 
 // 送信完了後に表示するページURL（上記で1を設定した場合のみ）※httpから始まるURLで指定ください。（相対パスでも基本的には問題ないです）
-$thanksPage = "../thanks.html";
+$thanksPage = "https://maruyoshi-ironworks.com/recruit/";
 
 // 必須入力項目を設定する(する=1, しない=0)
 $requireCheck = 1;
@@ -320,9 +320,9 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
         <link rel="shortcut icon" href="../../images/favicon.ico">
 
         <!-- FONTS -->
-        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
-        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
-        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu:100,400,400italic,500,700'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:100,400,400italic,500,700'>
 
         <!-- CSS -->
         <link rel='stylesheet' href='../../css/global.css'>
@@ -827,7 +827,7 @@ function adminHeader( $userMail, $post_mail, $BccMail, $to ) {
 
 //管理者宛送信メールボディ
 function mailToAdmin( $arr, $subject, $mailFooterDsp, $mailSignature, $encode, $confirmDsp ) {
-	$adminBody = "「" . $subject . "」からメールが届きました\n\n";
+	$adminBody = " $subject \n";
 	$adminBody .= "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
 	$adminBody .= postToMail( $arr );//POSTデータを関数からセット
 	$adminBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n";
@@ -937,7 +937,7 @@ function refererCheck( $Referer_check, $Referer_check_domain ) {
 }
 
 function copyright() {
-	echo '<a style="display:block;text-align:center;margin:15px 0;font-size:11px;color:#aaa;text-decoration:none" href="http://www.php-factory.net/" target="_blank">- PHP工房 -</a>';
+	echo '<a style="display:block;text-align:center;margin:15px 0;font-size:11px;color:#aaa;text-decoration:none" href="https://www.php-factory.net/" target="_blank">- PHP工房 -</a>';
 }
 
 //----------------------------------------------------------------------
