@@ -1,10 +1,10 @@
-<?php header( "Content-Type:text/html;charset=utf-8" ); ?>
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
 <?php //error_reporting(E_ALL | E_STRICT);
 ##-----------------------------------------------------------------------------------------------------------------##
 #
 #  PHPメールプログラム　フリー版 最終更新日2018/07/27
 #　改造や改変は自己責任で行ってください。
-#	
+#
 #  HP: https://www.php-factory.net/
 #
 #  重要！！サイトでチェックボックスを使用する場合のみですが。。。
@@ -13,11 +13,11 @@
 #  nameの値の最後に[と]を付ける。じゃないと複数の値を取得できません！
 #
 ##-----------------------------------------------------------------------------------------------------------------##
-if ( version_compare( PHP_VERSION, '5.1.0', '>=' ) ) {//PHP5.1.0以上の場合のみタイムゾーンを定義
-	date_default_timezone_set( 'Asia/Tokyo' );//タイムゾーンの設定（日本以外の場合には適宜設定ください）
+if (version_compare(PHP_VERSION, '5.1.0', '>=')) {//PHP5.1.0以上の場合のみタイムゾーンを定義
+    date_default_timezone_set('Asia/Tokyo');//タイムゾーンの設定（日本以外の場合には適宜設定ください）
 }
 /*-------------------------------------------------------------------------------------------------------------------
-* ★以下設定時の注意点　
+* ★以下設定時の注意点
 * ・値（=の後）は数字以外の文字列（一部を除く）はダブルクオーテーション「"」、または「'」で囲んでいます。
 * ・これをを外したり削除したりしないでください。後ろのセミコロン「;」も削除しないください。
 * ・また先頭に「$」が付いた文字列は変更しないでください。数字の1または0で設定しているものは必ず半角数字で設定下さい。
@@ -33,11 +33,11 @@ if ( version_compare( PHP_VERSION, '5.1.0', '>=' ) ) {//PHP5.1.0以上の場合�
 $site_top = "/";
 
 //管理者のメールアドレス ※メールを受け取るメールアドレス(複数指定する場合は「,」で区切ってください 例 $to = "aa@aa.aa,bb@bb.bb";)
-$to = "information@maruyoshi-ironworks.com,yamauchi-t@plus-agc.com";
+$to = "information@maruyoshi-ironworks.com,maruyoshikougyo@gmail.com,yamauchi-t@plus-agc.com";
 
 //自動返信メールの送信元メールアドレス
 //必ず実在するメールアドレスでかつ出来る限り設置先サイトのドメインと同じドメインのメールアドレスとすることを強く推奨します
-$from = "information@maruyoshi-ironworks.com,yamauchi-t@plus-agc.com";
+$from = "information@maruyoshi-ironworks.com,maruyoshikougyo@gmail.com,yamauchi-t@plus-agc.com";
 
 //フォームのメールアドレス入力箇所のname属性の値（name="○○"　の○○部分）
 $Email = "Eメール";
@@ -90,7 +90,7 @@ $thanksPage = "../thanks.html";
 $requireCheck = 1;
 
 /* 必須入力項目(入力フォームで指定したname属性の値を指定してください。（上記で1を設定した場合のみ）
-値はシングルクォーテーションで囲み、複数の場合はカンマで区切ってください。フォーム側と順番を合わせると良いです。 
+値はシングルクォーテーションで囲み、複数の場合はカンマで区切ってください。フォーム側と順番を合わせると良いです。
 配列の形「name="○○[]"」の場合には必ず後ろの[]を取ったものを指定して下さい。*/
 $require = array( 'お名前', 'Eメール', '件名', 'お問い合わせ内容' );
 
@@ -168,27 +168,27 @@ $use_envelope = 0;
 
 //機種依存文字の変換
 /*たとえば㈱（かっこ株）や①（丸1）、その他特殊な記号や特殊な漢字などは変換できずに「？」と表示されます。それを回避するための機能です。
-確認画面表示時に置換処理されます。「変換前の文字」が「変換後の文字」に変換され、送信メール内でも変換された状態で送信されます。（たとえば「㈱」の場合、「（株）」に変換されます） 
+確認画面表示時に置換処理されます。「変換前の文字」が「変換後の文字」に変換され、送信メール内でも変換された状態で送信されます。（たとえば「㈱」の場合、「（株）」に変換されます）
 必要に応じて自由に追加して下さい。ただし、変換前の文字と変換後の文字の順番と数は必ず合わせる必要がありますのでご注意下さい。*/
 
 //変換前の文字
 $replaceStr['before'] = array( '①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '№', '㈲', '㈱', '髙' );
 //変換後の文字
 $replaceStr['after'] = array(
-	'(1)',
-	'(2)',
-	'(3)',
-	'(4)',
-	'(5)',
-	'(6)',
-	'(7)',
-	'(8)',
-	'(9)',
-	'(10)',
-	'No.',
-	'（有）',
-	'（株）',
-	'高'
+    '(1)',
+    '(2)',
+    '(3)',
+    '(4)',
+    '(5)',
+    '(6)',
+    '(7)',
+    '(8)',
+    '(9)',
+    '(10)',
+    'No.',
+    '（有）',
+    '（株）',
+    '高'
 );
 
 //------------------------------- 任意設定ここまで ---------------------------------------------
@@ -200,24 +200,24 @@ $replaceStr['after'] = array(
 //  関数実行、変数初期化
 //----------------------------------------------------------------------
 //トークンチェック用のセッションスタート
-if ( $useToken == 1 && $confirmDsp == 1 ) {
-	session_name( 'PHPMAILFORMSYSTEM' );
-	session_start();
+if ($useToken == 1 && $confirmDsp == 1) {
+    session_name('PHPMAILFORMSYSTEM');
+    session_start();
 }
 $encode = "UTF-8";//このファイルの文字コード定義（変更不可）
-if ( isset( $_GET ) ) {
-	$_GET = sanitize( $_GET );
+if (isset($_GET)) {
+    $_GET = sanitize($_GET);
 }//NULLバイト除去//
-if ( isset( $_POST ) ) {
-	$_POST = sanitize( $_POST );
+if (isset($_POST)) {
+    $_POST = sanitize($_POST);
 }//NULLバイト除去//
-if ( isset( $_COOKIE ) ) {
-	$_COOKIE = sanitize( $_COOKIE );
+if (isset($_COOKIE)) {
+    $_COOKIE = sanitize($_COOKIE);
 }//NULLバイト除去//
-if ( $encode == 'SJIS' ) {
-	$_POST = sjisReplace( $_POST, $encode );
+if ($encode == 'SJIS') {
+    $_POST = sjisReplace($_POST, $encode);
 }//Shift-JISの場合に誤変換文字の置換実行
-$funcRefererCheck = refererCheck( $Referer_check, $Referer_check_domain );//リファラチェック実行
+$funcRefererCheck = refererCheck($Referer_check, $Referer_check_domain);//リファラチェック実行
 
 //変数初期化
 $sendmail   = 0;
@@ -226,114 +226,115 @@ $post_mail  = '';
 $errm       = '';
 $header     = '';
 
-if ( $requireCheck == 1 ) {
-	$requireResArray = requireCheck( $require );//必須チェック実行し返り値を受け取る
-	$errm            = $requireResArray['errm'];
-	$empty_flag      = $requireResArray['empty_flag'];
+if ($requireCheck == 1) {
+    $requireResArray = requireCheck($require);//必須チェック実行し返り値を受け取る
+    $errm            = $requireResArray['errm'];
+    $empty_flag      = $requireResArray['empty_flag'];
 }
 //メールアドレスチェック
-if ( empty( $errm ) ) {
-	foreach ( $_POST as $key => $val ) {
-		if ( $val == "confirm_submit" ) {
-			$sendmail = 1;
-		}
-		if ( $key == $Email ) {
-			$post_mail = h( $val );
-		}
-		if ( $key == $Email && $mail_check == 1 && ! empty( $val ) ) {
-			if ( ! checkMail( $val ) ) {
-				$errm       .= "<p class=\"error_messe\">【" . $key . "】はメールアドレスの形式が正しくありません。</p>\n";
-				$empty_flag = 1;
-			}
-		}
-	}
+if (empty($errm)) {
+    foreach ($_POST as $key => $val) {
+        if ($val == "confirm_submit") {
+            $sendmail = 1;
+        }
+        if ($key == $Email) {
+            $post_mail = h($val);
+        }
+        if ($key == $Email && $mail_check == 1 && ! empty($val)) {
+            if (! checkMail($val)) {
+                $errm       .= "<p class=\"error_messe\">【" . $key . "】はメールアドレスの形式が正しくありません。</p>\n";
+                $empty_flag = 1;
+            }
+        }
+    }
 }
 
-if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
+if (($confirmDsp == 0 || $sendmail == 1) && $empty_flag != 1) {
 
-	//トークンチェック（CSRF対策）※確認画面がONの場合のみ実施
-	if ( $useToken == 1 && $confirmDsp == 1 ) {
-		if ( empty( $_SESSION['mailform_token'] ) || ( $_SESSION['mailform_token'] !== $_POST['mailform_token'] ) ) {
-			exit( 'ページ遷移が不正です' );
-		}
-		if ( isset( $_SESSION['mailform_token'] ) ) {
-			unset( $_SESSION['mailform_token'] );
-		}//トークン破棄
-		if ( isset( $_POST['mailform_token'] ) ) {
-			unset( $_POST['mailform_token'] );
-		}//トークン破棄
-	}
+    //トークンチェック（CSRF対策）※確認画面がONの場合のみ実施
+    if ($useToken == 1 && $confirmDsp == 1) {
+        if (empty($_SESSION['mailform_token']) || ($_SESSION['mailform_token'] !== $_POST['mailform_token'])) {
+            exit('ページ遷移が不正です');
+        }
+        if (isset($_SESSION['mailform_token'])) {
+            unset($_SESSION['mailform_token']);
+        }//トークン破棄
+        if (isset($_POST['mailform_token'])) {
+            unset($_POST['mailform_token']);
+        }//トークン破棄
+    }
 
-	//差出人に届くメールをセット
-	if ( $remail == 1 ) {
-		$userBody   = mailToUser( $_POST, $dsp_name, $remail_text, $mailFooterDsp, $mailSignature, $encode );
-		$reheader   = userHeader( $refrom_name, $from, $encode );
-		$re_subject = "=?iso-2022-jp?B?" . base64_encode( mb_convert_encoding( $re_subject, "JIS", $encode ) ) . "?=";
-	}
-	//管理者宛に届くメールをセット
-	$adminBody = mailToAdmin( $_POST, $subject, $mailFooterDsp, $mailSignature, $encode, $confirmDsp );
-	$header    = adminHeader( $userMail, $post_mail, $BccMail, $to );
-	$subject   = "=?iso-2022-jp?B?" . base64_encode( mb_convert_encoding( $subject, "JIS", $encode ) ) . "?=";
+    //差出人に届くメールをセット
+    if ($remail == 1) {
+        $userBody   = mailToUser($_POST, $dsp_name, $remail_text, $mailFooterDsp, $mailSignature, $encode);
+        $reheader   = userHeader($refrom_name, $from, $encode);
+        $re_subject = "=?iso-2022-jp?B?" . base64_encode(mb_convert_encoding($re_subject, "JIS", $encode)) . "?=";
+    }
+    //管理者宛に届くメールをセット
+    $adminBody = mailToAdmin($_POST, $subject, $mailFooterDsp, $mailSignature, $encode, $confirmDsp);
+    $header    = adminHeader($userMail, $post_mail, $BccMail, $to);
+    $subject   = "=?iso-2022-jp?B?" . base64_encode(mb_convert_encoding($subject, "JIS", $encode)) . "?=";
 
-	//-fオプションによるエンベロープFrom（Return-Path）の設定(safe_modeがOFFの場合かつ上記設定がONの場合のみ実施)
-	if ( $use_envelope == 0 ) {
-		mail( $to, $subject, $adminBody, $header );
-		if ( $remail == 1 && ! empty( $post_mail ) ) {
-			mail( $post_mail, $re_subject, $userBody, $reheader );
-		}
-	} else {
-		mail( $to, $subject, $adminBody, $header, '-f' . $from );
-		if ( $remail == 1 && ! empty( $post_mail ) ) {
-			mail( $post_mail, $re_subject, $userBody, $reheader, '-f' . $from );
-		}
-	}
-} else if ( $confirmDsp == 1 ) {
+    //-fオプションによるエンベロープFrom（Return-Path）の設定(safe_modeがOFFの場合かつ上記設定がONの場合のみ実施)
+    if ($use_envelope == 0) {
+        mail($to, $subject, $adminBody, $header);
+        if ($remail == 1 && ! empty($post_mail)) {
+            mail($post_mail, $re_subject, $userBody, $reheader);
+        }
+    } else {
+        mail($to, $subject, $adminBody, $header, '-f' . $from);
+        if ($remail == 1 && ! empty($post_mail)) {
+            mail($post_mail, $re_subject, $userBody, $reheader, '-f' . $from);
+        }
+    }
+} elseif ($confirmDsp == 1) {
 
-	/*　▼▼▼送信確認画面のレイアウト※編集可　オリジナルのデザインも適用可能▼▼▼　*/
-	?>
-    <!DOCTYPE html>
-    <!--[if lt IE 7]>
+    /*　▼▼▼送信確認画面のレイアウト※編集可　オリジナルのデザインも適用可能▼▼▼　*/ ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>
     <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 "> <![endif]-->
-    <!--[if IE 7]>
+<!--[if IE 7]>
     <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
-    <!--[if IE 8]>
+<!--[if IE 8]>
     <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
-    <!--[if IE 9]>
+<!--[if IE 9]>
     <html class="no-js lt-ie10"> <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <html lang="ja" class="no-js">
-    <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ja" class="no-js">
+<!--<![endif]-->
 
-    <head>
+<head>
 
-        <!-- Basic Page Needs -->
-        <meta charset="utf-8">
-        <title>送信完了 | 有限会社まるよし工業</title>
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <meta http-equiv="content-language" content="ja">
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>送信完了 | 有限会社まるよし工業</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="content-language" content="ja">
 
-        <!-- Mobile Specific Metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <!-- Favicons -->
-        <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
 
-        <!-- FONTS -->
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:300,400,400italic,500,700,900'>
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron:300,400,400italic,500,700,900'>
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:100,400,400italic,500,700'>
+    <!-- FONTS -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:300,400,400italic,500,700,900'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron:300,400,400italic,500,700,900'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:100,400,400italic,500,700'>
 
-        <!-- CSS -->
-        <link rel='stylesheet' href='../css/global.css'>
-        <link rel='stylesheet' href='../css/structure.css'>
-        <link rel='stylesheet' href='../css/tuning.css'>
-        <link rel='stylesheet' href='../css/custom.css'>
+    <!-- CSS -->
+    <link rel='stylesheet' href='../css/global.css'>
+    <link rel='stylesheet' href='../css/structure.css'>
+    <link rel='stylesheet' href='../css/tuning.css'>
+    <link rel='stylesheet' href='../css/custom.css'>
 
-    </head>
-    <body class="style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders">
+</head>
+
+<body
+    class="style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders">
     <!-- Main Theme Wrapper -->
     <div id="Wrapper">
         <!-- Header Wrapper -->
@@ -349,9 +350,7 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                                 <!-- Logo-->
                                 <div class="logo">
                                     <a id="logo" href="/" title="有限会社まるよし工業"><img class="scale-with-grid"
-                                                                                  src="../images/fix/logo.svg"
-                                                                                  alt="有限会社まるよし工業" width="169"
-                                                                                  height="60">
+                                            src="../images/fix/logo.svg" alt="有限会社まるよし工業" width="169" height="60">
                                     </a>
                                 </div>
                                 <!-- Main menu-->
@@ -388,8 +387,8 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                                 <div class="search_wrapper">
                                     <form method="get" id="searchform" action="#">
                                         <input type="text" class="field" name="s" id="s"
-                                               placeholder="Enter your search"/>
-                                        <input type="submit" class="submit flv_disp_none" value=""/>
+                                            placeholder="Enter your search" />
+                                        <input type="submit" class="submit flv_disp_none" value="" />
                                     </form>
                                 </div>
                             </div>
@@ -416,54 +415,54 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                                     <div class="column one-third column_image ">
                                         <div class="image_frame image_item no_link scale-with-grid no_border">
                                             <div class="image_wrapper"><img class="scale-with-grid"
-                                                                            src="../images/home_tuning_contact_logo.jpg"
-                                                                            alt=""
-                                                                            width="108" height="230"/>
+                                                    src="../images/home_tuning_contact_logo.jpg" alt="" width="108"
+                                                    height="230" />
                                             </div>
                                         </div>
                                     </div>
                                     <!-- One Second (1/2) Column -->
                                     <div class="column one-second column_column ">
                                         <div class="column_attr" style=" padding:0 13% 0 0;">
-                                            <hr class="no_line" style="margin: 0 auto 70px;"/>
+                                            <hr class="no_line" style="margin: 0 auto 70px;" />
                                             <h3 class="animate" data-anim-type="fadeInRight">Confirmation Screen</h3>
-                                            <hr class="no_line hrmargin_b_30"/>
+                                            <hr class="no_line hrmargin_b_30" />
                                             <h2 class="animate" data-anim-type="fadeInRight">確認画面</h2>
-                                            <hr class="no_line" style="margin: 0 auto 55px;"/>
-                                            <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
+                                            <hr class="no_line" style="margin: 0 auto 55px;" />
+                                            <div
+                                                class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                 <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                src="../images/home_tuning_sep3.png"
-                                                                                alt=""
-                                                                                width="193" height="4"/>
+                                                        src="../images/home_tuning_sep3.png" alt="" width="193"
+                                                        height="4" />
                                                 </div>
                                             </div>
-                                            <hr class="no_line" style="margin: 0 auto 50px;"/>
+                                            <hr class="no_line" style="margin: 0 auto 50px;" />
                                             <h4 class="animate" data-anim-type="fadeInRight">
                                                 <!-- ▼************ 送信内容表示部　※編集は自己責任で ************ ▼-->
                                                 <div id="formWrap">
-													<?php if ( $empty_flag == 1 ) { ?>
-                                                        <div align="center">
-                                                            <h4>入力にエラーがあります。下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
-															<?php echo $errm; ?><br/><br/><input type="button"
-                                                                                                 value=" 前画面に戻る "
-                                                                                                 onClick="history.back()">
-                                                        </div>
-													<?php } else { ?>
-                                                        <p align="left">以下の内容で間違いがなければ、「送信する」ボタンを押してください。</p>
-                                                        <form action="<?php echo h( $_SERVER['SCRIPT_NAME'] ); ?>"
-                                                              method="POST">
-                                                            <table class="formTable">
-																<?php echo confirmOutput( $_POST );//入力内容を表示?>
-                                                            </table>
-                                                            <p align="center"><input type="hidden" name="mail_set"
-                                                                                     value="confirm_submit">
-                                                                <input type="hidden" name="httpReferer"
-                                                                       value="<?php echo h( $_SERVER['HTTP_REFERER'] ); ?>">
-                                                                <input type="submit" value="　送信する　">
-                                                                <input type="button" value="前画面に戻る"
-                                                                       onClick="history.back()"></p>
-                                                        </form>
-													<?php } ?>
+                                                    <?php if ($empty_flag == 1) { ?>
+                                                    <div align="center">
+                                                        <h4>入力にエラーがあります。下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
+                                                        <?php echo $errm; ?><br /><br /><input
+                                                            type="button" value=" 前画面に戻る " onClick="history.back()">
+                                                    </div>
+                                                    <?php } else { ?>
+                                                    <p align="left">以下の内容で間違いがなければ、「送信する」ボタンを押してください。</p>
+                                                    <form
+                                                        action="<?php echo h($_SERVER['SCRIPT_NAME']); ?>"
+                                                        method="POST">
+                                                        <table class="formTable">
+                                                            <?php echo confirmOutput($_POST);//入力内容を表示?>
+                                                        </table>
+                                                        <p align="center"><input type="hidden" name="mail_set"
+                                                                value="confirm_submit">
+                                                            <input type="hidden" name="httpReferer"
+                                                                value="<?php echo h($_SERVER['HTTP_REFERER']); ?>">
+                                                            <input type="submit" value="　送信する　">
+                                                            <input type="button" value="前画面に戻る"
+                                                                onClick="history.back()">
+                                                        </p>
+                                                    </form>
+                                                    <?php } ?>
                                                 </div><!-- /formWrap -->
                                                 <!-- ▲ *********** 送信内容確認部　※編集は自己責任で ************ ▲-->
                                             </h4>
@@ -472,7 +471,7 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                                     <!-- Page devider -->
                                     <!-- One full width row-->
                                     <div class="column one column_divider ">
-                                        <hr class="no_line hrmargin_b_40"/>
+                                        <hr class="no_line hrmargin_b_40" />
                                     </div>
                                 </div>
                             </div>
@@ -483,11 +482,11 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                                     <!-- One full width row-->
                                     <div class="column one column_column ">
                                         <div class="column_attr align_center">
-                                            <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
+                                            <div
+                                                class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                 <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                src="../images/home_tuning_sep2.png"
-                                                                                alt=""
-                                                                                width="4" height="193"/>
+                                                        src="../images/home_tuning_sep2.png" alt="" width="4"
+                                                        height="193" />
                                                 </div>
                                             </div>
                                         </div>
@@ -515,7 +514,8 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                         <aside id="nav_menu-2" class="widget widget_nav_menu">
                             <div class="menu-main-menu-container">
                                 <ul id="menu-main-menu-1" class="menu">
-                                    <li class="menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-5">
+                                    <li
+                                        class="menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-5">
                                         <a href="../index.html">ホーム</a>
                                     </li>
                                     <li class="menu-item menu-item-_type menu-item-object-page menu-item-2219">
@@ -541,12 +541,10 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
                             <div class="textwidget">
                                 <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                     <div class="image_wrapper"><img class="scale-with-grid"
-                                                                    src="../images/home_tuning_sep4.png" alt=""
-                                                                    width="88"
-                                                                    height="1"/>
+                                            src="../images/home_tuning_sep4.png" alt="" width="88" height="1" />
                                     </div>
                                 </div>
-                                <hr class="no_line hrmargin_b_20"/>
+                                <hr class="no_line hrmargin_b_20" />
                                 <p>
                                     All Rights Reserved© 有限会社まるよし工業
                                 </p>
@@ -718,13 +716,13 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
             }
 
 
-            jQuery(document).ready(function ($) {
+            jQuery(document).ready(function($) {
                 google_maps_563cb77532a4e();
             });
         </script>
 
         <script>
-            jQuery(window).load(function () {
+            jQuery(window).load(function() {
                 var retina = window.devicePixelRatio > 1 ? true : false;
                 if (retina) {
                     var retinaEl = jQuery("#logo img.logo-main");
@@ -743,55 +741,63 @@ if ( ( $confirmDsp == 0 || $sendmail == 1 ) && $empty_flag != 1 ) {
             });
         </script>
         <!-- ▼ Footerその他コンテンツなど　※編集可 ▼-->
-    </body>
-    </html>
-	<?php
-	/* ▲▲▲送信確認画面のレイアウト　※オリジナルのデザインも適用可能▲▲▲　*/
+</body>
+
+</html>
+<?php
+    /* ▲▲▲送信確認画面のレイアウト　※オリジナルのデザインも適用可能▲▲▲　*/
 }
 
-if ( ( $jumpPage == 0 && $sendmail == 1 ) || ( $jumpPage == 0 && ( $confirmDsp == 0 && $sendmail == 0 ) ) ) {
+if (($jumpPage == 0 && $sendmail == 1) || ($jumpPage == 0 && ($confirmDsp == 0 && $sendmail == 0))) {
 
-	/* ▼▼▼送信完了画面のレイアウト　編集可 ※送信完了後に指定のページに移動しない場合のみ表示▼▼▼　*/
-	?>
-    <!DOCTYPE HTML>
-    <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-        <meta name="format-detection" content="telephone=no">
-        <title>完了画面</title>
-    </head>
+    /* ▼▼▼送信完了画面のレイアウト　編集可 ※送信完了後に指定のページに移動しない場合のみ表示▼▼▼　*/ ?>
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <title>完了画面</title>
+</head>
+
 <body>
-<div align="center">
-	<?php if ( $empty_flag == 1 ) { ?>
+    <div align="center">
+        <?php if ($empty_flag == 1) { ?>
         <h4>入力にエラーがあります。下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
-        <div style="color:red"><?php echo $errm; ?></div>
-        <br/><br/><input type="button" value=" 前画面に戻る " onClick="history.back()">
+        <div style="color:red"><?php echo $errm; ?>
         </div>
-        </body>
-        </html>
-	<?php } else { ?>
-        送信ありがとうございました。<br/>
-        送信は正常に完了しました。<br/><br/>
-        <a href="<?php echo $site_top; ?>">トップページへ戻る&raquo;</a>
-        </div>
-		<?php copyright(); ?>
-        <!--  CV率を計測する場合ここにAnalyticsコードを貼り付け -->
-        </body>
-        </html>
-		<?php
-		/* ▲▲▲送信完了画面のレイアウト 編集可 ※送信完了後に指定のページに移動しない場合のみ表示▲▲▲　*/
-	}
+        <br /><br /><input type="button" value=" 前画面に戻る " onClick="history.back()">
+    </div>
+</body>
+
+</html>
+<?php } else { ?>
+送信ありがとうございました。<br />
+送信は正常に完了しました。<br /><br />
+<a href="<?php echo $site_top; ?>">トップページへ戻る&raquo;</a>
+</div>
+<?php copyright(); ?>
+<!--  CV率を計測する場合ここにAnalyticsコードを貼り付け -->
+</body>
+
+</html>
+<?php
+        /* ▲▲▲送信完了画面のレイアウト 編集可 ※送信完了後に指定のページに移動しない場合のみ表示▲▲▲　*/
+    }
 } //確認画面無しの場合の表示、指定のページに移動する設定の場合、エラーチェックで問題が無ければ指定ページヘリダイレクト
-else if ( ( $jumpPage == 1 && $sendmail == 1 ) || $confirmDsp == 0 ) {
-	if ( $empty_flag == 1 ) { ?>
-        <div align="center"><h4>入力にエラーがあります。下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
-            <div style="color:red"><?php echo $errm; ?></div>
-            <br/><br/><input type="button" value=" 前画面に戻る " onClick="history.back()"></div>
-		<?php
-	} else {
-		header( "Location: " . $thanksPage );
-	}
+elseif (($jumpPage == 1 && $sendmail == 1) || $confirmDsp == 0) {
+    if ($empty_flag == 1) { ?>
+<div align="center">
+    <h4>入力にエラーがあります。下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
+    <div style="color:red"><?php echo $errm; ?>
+    </div>
+    <br /><br /><input type="button" value=" 前画面に戻る " onClick="history.back()">
+</div>
+<?php
+    } else {
+        header("Location: " . $thanksPage);
+    }
 }
 
 // 以下の変更は知識のある方のみ自己責任でお願いします。
@@ -799,289 +805,299 @@ else if ( ( $jumpPage == 1 && $sendmail == 1 ) || $confirmDsp == 0 ) {
 //----------------------------------------------------------------------
 //  関数定義(START)
 //----------------------------------------------------------------------
-function checkMail( $str ) {
-	$mailaddress_array = explode( '@', $str );
-	if ( preg_match( "/^[\.!#%&\-_0-9a-zA-Z\?\/\+]+\@[!#%&\-_0-9a-zA-Z]+(\.[!#%&\-_0-9a-zA-Z]+)+$/", "$str" ) && count( $mailaddress_array ) == 2 ) {
-		return true;
-	} else {
-		return false;
-	}
+function checkMail($str)
+{
+    $mailaddress_array = explode('@', $str);
+    if (preg_match("/^[\.!#%&\-_0-9a-zA-Z\?\/\+]+\@[!#%&\-_0-9a-zA-Z]+(\.[!#%&\-_0-9a-zA-Z]+)+$/", "$str") && count($mailaddress_array) == 2) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function h( $string ) {
-	global $encode;
+function h($string)
+{
+    global $encode;
 
-	return htmlspecialchars( $string, ENT_QUOTES, $encode );
+    return htmlspecialchars($string, ENT_QUOTES, $encode);
 }
 
-function sanitize( $arr ) {
-	if ( is_array( $arr ) ) {
-		return array_map( 'sanitize', $arr );
-	}
+function sanitize($arr)
+{
+    if (is_array($arr)) {
+        return array_map('sanitize', $arr);
+    }
 
-	return str_replace( "\0", "", $arr );
+    return str_replace("\0", "", $arr);
 }
 
 //Shift-JISの場合に誤変換文字の置換関数
-function sjisReplace( $arr, $encode ) {
-	foreach ( $arr as $key => $val ) {
-		$key              = str_replace( '＼', 'ー', $key );
-		$resArray[ $key ] = $val;
-	}
+function sjisReplace($arr, $encode)
+{
+    foreach ($arr as $key => $val) {
+        $key              = str_replace('＼', 'ー', $key);
+        $resArray[ $key ] = $val;
+    }
 
-	return $resArray;
+    return $resArray;
 }
 
 //送信メールにPOSTデータをセットする関数
-function postToMail( $arr ) {
-	global $hankaku, $hankaku_array;
-	$resArray = '';
-	foreach ( $arr as $key => $val ) {
-		$out = '';
-		if ( is_array( $val ) ) {
-			foreach ( $val as $key02 => $item ) {
-				//連結項目の処理
-				if ( is_array( $item ) ) {
-					$out .= connect2val( $item );
-				} else {
-					$out .= $item . ', ';
-				}
-			}
-			$out = rtrim( $out, ', ' );
+function postToMail($arr)
+{
+    global $hankaku, $hankaku_array;
+    $resArray = '';
+    foreach ($arr as $key => $val) {
+        $out = '';
+        if (is_array($val)) {
+            foreach ($val as $key02 => $item) {
+                //連結項目の処理
+                if (is_array($item)) {
+                    $out .= connect2val($item);
+                } else {
+                    $out .= $item . ', ';
+                }
+            }
+            $out = rtrim($out, ', ');
+        } else {
+            $out = $val;
+        }//チェックボックス（配列）追記ここまで
+        if (get_magic_quotes_gpc()) {
+            $out = stripslashes($out);
+        }
 
-		} else {
-			$out = $val;
-		}//チェックボックス（配列）追記ここまで
-		if ( get_magic_quotes_gpc() ) {
-			$out = stripslashes( $out );
-		}
+        //全角→半角変換
+        if ($hankaku == 1) {
+            $out = zenkaku2hankaku($key, $out, $hankaku_array);
+        }
+        if ($out != "confirm_submit" && $key != "httpReferer") {
+            $resArray .= "【 " . h($key) . " 】 " . h($out) . "\n";
+        }
+    }
 
-		//全角→半角変換
-		if ( $hankaku == 1 ) {
-			$out = zenkaku2hankaku( $key, $out, $hankaku_array );
-		}
-		if ( $out != "confirm_submit" && $key != "httpReferer" ) {
-			$resArray .= "【 " . h( $key ) . " 】 " . h( $out ) . "\n";
-		}
-	}
-
-	return $resArray;
+    return $resArray;
 }
 
 //確認画面の入力内容出力用関数
-function confirmOutput( $arr ) {
-	global $hankaku, $hankaku_array, $useToken, $confirmDsp, $replaceStr;
-	$html = '';
-	foreach ( $arr as $key => $val ) {
-		$out = '';
-		if ( is_array( $val ) ) {
-			foreach ( $val as $key02 => $item ) {
-				//連結項目の処理
-				if ( is_array( $item ) ) {
-					$out .= connect2val( $item );
-				} else {
-					$out .= $item . ', ';
-				}
-			}
-			$out = rtrim( $out, ', ' );
+function confirmOutput($arr)
+{
+    global $hankaku, $hankaku_array, $useToken, $confirmDsp, $replaceStr;
+    $html = '';
+    foreach ($arr as $key => $val) {
+        $out = '';
+        if (is_array($val)) {
+            foreach ($val as $key02 => $item) {
+                //連結項目の処理
+                if (is_array($item)) {
+                    $out .= connect2val($item);
+                } else {
+                    $out .= $item . ', ';
+                }
+            }
+            $out = rtrim($out, ', ');
+        } else {
+            $out = $val;
+        }//チェックボックス（配列）追記ここまで
+        if (get_magic_quotes_gpc()) {
+            $out = stripslashes($out);
+        }
+        $out = nl2br(h($out));//※追記 改行コードを<br>タグに変換
+        $key = h($key);
+        $out = str_replace($replaceStr['before'], $replaceStr['after'], $out);//機種依存文字の置換処理
 
-		} else {
-			$out = $val;
-		}//チェックボックス（配列）追記ここまで
-		if ( get_magic_quotes_gpc() ) {
-			$out = stripslashes( $out );
-		}
-		$out = nl2br( h( $out ) );//※追記 改行コードを<br>タグに変換
-		$key = h( $key );
-		$out = str_replace( $replaceStr['before'], $replaceStr['after'], $out );//機種依存文字の置換処理
+        //全角→半角変換
+        if ($hankaku == 1) {
+            $out = zenkaku2hankaku($key, $out, $hankaku_array);
+        }
 
-		//全角→半角変換
-		if ( $hankaku == 1 ) {
-			$out = zenkaku2hankaku( $key, $out, $hankaku_array );
-		}
+        $html .= "<tr><th>" . $key . "</th><td>" . $out;
+        $html .= '<input type="hidden" name="' . $key . '" value="' . str_replace(array(
+                "<br />",
+                "<br>"
+            ), "", $out) . '" />';
+        $html .= "</td></tr>\n";
+    }
+    //トークンをセット
+    if ($useToken == 1 && $confirmDsp == 1) {
+        $token                      = sha1(uniqid(mt_rand(), true));
+        $_SESSION['mailform_token'] = $token;
+        $html                       .= '<input type="hidden" name="mailform_token" value="' . $token . '" />';
+    }
 
-		$html .= "<tr><th>" . $key . "</th><td>" . $out;
-		$html .= '<input type="hidden" name="' . $key . '" value="' . str_replace( array(
-				"<br />",
-				"<br>"
-			), "", $out ) . '" />';
-		$html .= "</td></tr>\n";
-	}
-	//トークンをセット
-	if ( $useToken == 1 && $confirmDsp == 1 ) {
-		$token                      = sha1( uniqid( mt_rand(), true ) );
-		$_SESSION['mailform_token'] = $token;
-		$html                       .= '<input type="hidden" name="mailform_token" value="' . $token . '" />';
-	}
-
-	return $html;
+    return $html;
 }
 
 //全角→半角変換
-function zenkaku2hankaku( $key, $out, $hankaku_array ) {
-	global $encode;
-	if ( is_array( $hankaku_array ) && function_exists( 'mb_convert_kana' ) ) {
-		foreach ( $hankaku_array as $hankaku_array_val ) {
-			if ( $key == $hankaku_array_val ) {
-				$out = mb_convert_kana( $out, 'a', $encode );
-			}
-		}
-	}
+function zenkaku2hankaku($key, $out, $hankaku_array)
+{
+    global $encode;
+    if (is_array($hankaku_array) && function_exists('mb_convert_kana')) {
+        foreach ($hankaku_array as $hankaku_array_val) {
+            if ($key == $hankaku_array_val) {
+                $out = mb_convert_kana($out, 'a', $encode);
+            }
+        }
+    }
 
-	return $out;
+    return $out;
 }
 
 //配列連結の処理
-function connect2val( $arr ) {
-	$out = '';
-	foreach ( $arr as $key => $val ) {
-		if ( $key === 0 || $val == '' ) {//配列が未記入（0）、または内容が空のの場合には連結文字を付加しない（型まで調べる必要あり）
-			$key = '';
-		} elseif ( strpos( $key, "円" ) !== false && $val != '' && preg_match( "/^[0-9]+$/", $val ) ) {
-			$val = number_format( $val );//金額の場合には3桁ごとにカンマを追加
-		}
-		$out .= $val . $key;
-	}
+function connect2val($arr)
+{
+    $out = '';
+    foreach ($arr as $key => $val) {
+        if ($key === 0 || $val == '') {//配列が未記入（0）、または内容が空のの場合には連結文字を付加しない（型まで調べる必要あり）
+            $key = '';
+        } elseif (strpos($key, "円") !== false && $val != '' && preg_match("/^[0-9]+$/", $val)) {
+            $val = number_format($val);//金額の場合には3桁ごとにカンマを追加
+        }
+        $out .= $val . $key;
+    }
 
-	return $out;
+    return $out;
 }
 
 //管理者宛送信メールヘッダ
-function adminHeader( $userMail, $post_mail, $BccMail, $to ) {
-	$header = '';
-	if ( $userMail == 1 && ! empty( $post_mail ) ) {
-		$header = "From: $post_mail\n";
-		if ( $BccMail != '' ) {
-			$header .= "Bcc: $BccMail\n";
-		}
-		$header .= "Reply-To: " . $post_mail . "\n";
-	} else {
-		if ( $BccMail != '' ) {
-			$header = "Bcc: $BccMail\n";
-		}
-		$header .= "Reply-To: " . $to . "\n";
-	}
-	$header .= "Content-Type:text/plain;charset=iso-2022-jp\nX-Mailer: PHP/" . phpversion();
+function adminHeader($userMail, $post_mail, $BccMail, $to)
+{
+    $header = '';
+    if ($userMail == 1 && ! empty($post_mail)) {
+        $header = "From: $post_mail\n";
+        if ($BccMail != '') {
+            $header .= "Bcc: $BccMail\n";
+        }
+        $header .= "Reply-To: " . $post_mail . "\n";
+    } else {
+        if ($BccMail != '') {
+            $header = "Bcc: $BccMail\n";
+        }
+        $header .= "Reply-To: " . $to . "\n";
+    }
+    $header .= "Content-Type:text/plain;charset=iso-2022-jp\nX-Mailer: PHP/" . phpversion();
 
-	return $header;
+    return $header;
 }
 
 //管理者宛送信メールボディ
-function mailToAdmin( $arr, $subject, $mailFooterDsp, $mailSignature, $encode, $confirmDsp ) {
-	$adminBody = "「" . $subject . "」からメールが届きました\n\n";
-	$adminBody .= "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
-	$adminBody .= postToMail( $arr );//POSTデータを関数からセット
-	$adminBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n";
-	$adminBody .= "送信された日時：" . date( "Y/m/d (D) H:i:s", time() ) . "\n";
-	$adminBody .= "送信者のIPアドレス：" . @$_SERVER["REMOTE_ADDR"] . "\n";
-	$adminBody .= "送信者のホスト名：" . getHostByAddr( getenv( 'REMOTE_ADDR' ) ) . "\n";
-	if ( $confirmDsp != 1 ) {
-		$adminBody .= "問い合わせのページURL：" . @$_SERVER['HTTP_REFERER'] . "\n";
-	} else {
-		$adminBody .= "問い合わせのページURL：" . @$arr['httpReferer'] . "\n";
-	}
-	if ( $mailFooterDsp == 1 ) {
-		$adminBody .= $mailSignature;
-	}
+function mailToAdmin($arr, $subject, $mailFooterDsp, $mailSignature, $encode, $confirmDsp)
+{
+    $adminBody = "「" . $subject . "」からメールが届きました\n\n";
+    $adminBody .= "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
+    $adminBody .= postToMail($arr);//POSTデータを関数からセット
+    $adminBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n";
+    $adminBody .= "送信された日時：" . date("Y/m/d (D) H:i:s", time()) . "\n";
+    $adminBody .= "送信者のIPアドレス：" . @$_SERVER["REMOTE_ADDR"] . "\n";
+    $adminBody .= "送信者のホスト名：" . getHostByAddr(getenv('REMOTE_ADDR')) . "\n";
+    if ($confirmDsp != 1) {
+        $adminBody .= "問い合わせのページURL：" . @$_SERVER['HTTP_REFERER'] . "\n";
+    } else {
+        $adminBody .= "問い合わせのページURL：" . @$arr['httpReferer'] . "\n";
+    }
+    if ($mailFooterDsp == 1) {
+        $adminBody .= $mailSignature;
+    }
 
-	return mb_convert_encoding( $adminBody, "JIS", $encode );
+    return mb_convert_encoding($adminBody, "JIS", $encode);
 }
 
 //ユーザ宛送信メールヘッダ
-function userHeader( $refrom_name, $to, $encode ) {
-	$reheader = "From: ";
-	if ( ! empty( $refrom_name ) ) {
-		$default_internal_encode = mb_internal_encoding();
-		if ( $default_internal_encode != $encode ) {
-			mb_internal_encoding( $encode );
-		}
-		$reheader .= mb_encode_mimeheader( $refrom_name ) . " <" . $to . ">\nReply-To: " . $to;
-	} else {
-		$reheader .= "$to\nReply-To: " . $to;
-	}
-	$reheader .= "\nContent-Type: text/plain;charset=iso-2022-jp\nX-Mailer: PHP/" . phpversion();
+function userHeader($refrom_name, $to, $encode)
+{
+    $reheader = "From: ";
+    if (! empty($refrom_name)) {
+        $default_internal_encode = mb_internal_encoding();
+        if ($default_internal_encode != $encode) {
+            mb_internal_encoding($encode);
+        }
+        $reheader .= mb_encode_mimeheader($refrom_name) . " <" . $to . ">\nReply-To: " . $to;
+    } else {
+        $reheader .= "$to\nReply-To: " . $to;
+    }
+    $reheader .= "\nContent-Type: text/plain;charset=iso-2022-jp\nX-Mailer: PHP/" . phpversion();
 
-	return $reheader;
+    return $reheader;
 }
 
 //ユーザ宛送信メールボディ
-function mailToUser( $arr, $dsp_name, $remail_text, $mailFooterDsp, $mailSignature, $encode ) {
-	$userBody = '';
-	if ( isset( $arr[ $dsp_name ] ) ) {
-		$userBody = h( $arr[ $dsp_name ] ) . " 様\n";
-	}
-	$userBody .= $remail_text;
-	$userBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
-	$userBody .= postToMail( $arr );//POSTデータを関数からセット
-	$userBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
-	$userBody .= "送信日時：" . date( "Y/m/d (D) H:i:s", time() ) . "\n";
-	if ( $mailFooterDsp == 1 ) {
-		$userBody .= $mailSignature;
-	}
+function mailToUser($arr, $dsp_name, $remail_text, $mailFooterDsp, $mailSignature, $encode)
+{
+    $userBody = '';
+    if (isset($arr[ $dsp_name ])) {
+        $userBody = h($arr[ $dsp_name ]) . " 様\n";
+    }
+    $userBody .= $remail_text;
+    $userBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
+    $userBody .= postToMail($arr);//POSTデータを関数からセット
+    $userBody .= "\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n";
+    $userBody .= "送信日時：" . date("Y/m/d (D) H:i:s", time()) . "\n";
+    if ($mailFooterDsp == 1) {
+        $userBody .= $mailSignature;
+    }
 
-	return mb_convert_encoding( $userBody, "JIS", $encode );
+    return mb_convert_encoding($userBody, "JIS", $encode);
 }
 
 //必須チェック関数
-function requireCheck( $require ) {
-	$res['errm']       = '';
-	$res['empty_flag'] = 0;
-	foreach ( $require as $requireVal ) {
-		$existsFalg = '';
-		foreach ( $_POST as $key => $val ) {
-			if ( $key == $requireVal ) {
+function requireCheck($require)
+{
+    $res['errm']       = '';
+    $res['empty_flag'] = 0;
+    foreach ($require as $requireVal) {
+        $existsFalg = '';
+        foreach ($_POST as $key => $val) {
+            if ($key == $requireVal) {
 
-				//連結指定の項目（配列）のための必須チェック
-				if ( is_array( $val ) ) {
-					$connectEmpty = 0;
-					foreach ( $val as $kk => $vv ) {
-						if ( is_array( $vv ) ) {
-							foreach ( $vv as $kk02 => $vv02 ) {
-								if ( $vv02 == '' ) {
-									$connectEmpty ++;
-								}
-							}
-						}
+                //連結指定の項目（配列）のための必須チェック
+                if (is_array($val)) {
+                    $connectEmpty = 0;
+                    foreach ($val as $kk => $vv) {
+                        if (is_array($vv)) {
+                            foreach ($vv as $kk02 => $vv02) {
+                                if ($vv02 == '') {
+                                    $connectEmpty ++;
+                                }
+                            }
+                        }
+                    }
+                    if ($connectEmpty > 0) {
+                        $res['errm']       .= "<p class=\"error_messe\">【" . h($key) . "】は必須項目です。</p>\n";
+                        $res['empty_flag'] = 1;
+                    }
+                } //デフォルト必須チェック
+                elseif ($val == '') {
+                    $res['errm']       .= "<p class=\"error_messe\">【" . h($key) . "】は必須項目です。</p>\n";
+                    $res['empty_flag'] = 1;
+                }
 
-					}
-					if ( $connectEmpty > 0 ) {
-						$res['errm']       .= "<p class=\"error_messe\">【" . h( $key ) . "】は必須項目です。</p>\n";
-						$res['empty_flag'] = 1;
-					}
-				} //デフォルト必須チェック
-                elseif ( $val == '' ) {
-					$res['errm']       .= "<p class=\"error_messe\">【" . h( $key ) . "】は必須項目です。</p>\n";
-					$res['empty_flag'] = 1;
-				}
+                $existsFalg = 1;
+                break;
+            }
+        }
+        if ($existsFalg != 1) {
+            $res['errm']       .= "<p class=\"error_messe\">【" . $requireVal . "】が未選択です。</p>\n";
+            $res['empty_flag'] = 1;
+        }
+    }
 
-				$existsFalg = 1;
-				break;
-			}
-
-		}
-		if ( $existsFalg != 1 ) {
-			$res['errm']       .= "<p class=\"error_messe\">【" . $requireVal . "】が未選択です。</p>\n";
-			$res['empty_flag'] = 1;
-		}
-	}
-
-	return $res;
+    return $res;
 }
 
 //リファラチェック
-function refererCheck( $Referer_check, $Referer_check_domain ) {
-	if ( $Referer_check == 1 && ! empty( $Referer_check_domain ) ) {
-		if ( strpos( $_SERVER['HTTP_REFERER'], $Referer_check_domain ) === false ) {
-			return exit( '<p align="center">リファラチェックエラー。フォームページのドメインとこのファイルのドメインが一致しません</p>' );
-		}
-	}
+function refererCheck($Referer_check, $Referer_check_domain)
+{
+    if ($Referer_check == 1 && ! empty($Referer_check_domain)) {
+        if (strpos($_SERVER['HTTP_REFERER'], $Referer_check_domain) === false) {
+            return exit('<p align="center">リファラチェックエラー。フォームページのドメインとこのファイルのドメインが一致しません</p>');
+        }
+    }
 }
 
-function copyright() {
-	echo '<a style="display:block;text-align:center;margin:15px 0;font-size:11px;color:#aaa;text-decoration:none" href="https://www.php-factory.net/" target="_blank">- PHP工房 -</a>';
+function copyright()
+{
+    echo '<a style="display:block;text-align:center;margin:15px 0;font-size:11px;color:#aaa;text-decoration:none" href="https://www.php-factory.net/" target="_blank">- PHP工房 -</a>';
 }
 
 //----------------------------------------------------------------------
 //  関数定義(END)
 //----------------------------------------------------------------------
-?>
