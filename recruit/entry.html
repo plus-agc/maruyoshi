@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="サイトの説明文">
+  <meta name="keywords" content="サイトのキーワード">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="サイトの著者名">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="正しいURL">
+  <meta property="og:title" content="サイトのタイトル">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="サイトのURL">
+  <meta property="og:image" content="サイトの画像URL">
+  <meta property="og:description" content="サイトの説明文">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "サイトのURL",
+      "name": "サイトの名前",
+      "logo": "サイトのロゴのURL",
+      "description": "サイトの説明文",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "サイトの電話番号",
+        "contactType": "カスタマーサポート"
+      },
+      "sameAs": [
+        "サイトのSNSのURL",
+        "別のSNSのURL"
+      ]
+    }
+  </script>
+
+  <!-- pageDataのtitle情報を出力 -->
+  <title>まるよし工業 | エントリー</title>
+
+  <!-- CSSの読み込みを追加 -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <script type="module" crossorigin src="./assets/js/main.js"></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <!-- header.htmlの読み込み -->
+  <header id="header">
+    <h1><a href="index.html"><img src="./assets/images/logo.svg" alt="有限会社まるよし工業"></a></h1>
+    <section id="entry">
+      <img src="./assets/images/entry-img.jpg" alt="">
+    </section>
+    <!-- Navigation -->
+    <section id="navigation">
+      <nav id="global-nav">
+        <div class="l-container">
+          <ul>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="interview.html">社員インタビュー</a></li>
+            <li><a href="job.html">募集要項</a></li>
+            <li><a href="entry.html">応募フォーム</a></li>
+            <li><a href="https://maruyoshi-ironworks.com" target="_blank">まるよし工業企業サイト</a></li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+  </header> <!-- main -->
+  <main>
+    <section id="entryform">
+      <div class="l-container">
+        <article id="formWrap">
+          <h2>応募フォーム</h2>
+          <form method="post" action="entry/mail.php">
+            <table class="formTable">
+              <tr>
+                <th>希望職種</th>
+                <td>
+                  <select name="希望職種">
+                    <option value="" selected>
+                      以下よりお選びください</option>
+                    <option value="鉄工作業スタッフ（未経験者OK）" style="color:#000;">
+                      鉄工作業スタッフ（未経験者OK）
+                    </option>
+                    <option value="CADオペレーター（未経験者OK）" style="color:#000;">
+                      CADオペレーター（未経験者OK）
+                    </option>
+                    <option value="CADオペレーター（図面作成スタッフ）高卒" style="color:#000;">
+                      CADオペレーター（図面作成スタッフ）高卒
+                    </option>
+                    <option value="鉄工作業スタッフ（高卒）" style="color:#000;">
+                      鉄工作業スタッフ（高卒）
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>お名前</th>
+                <td><input placeholder="お名前" type="text" name="お名前" size="40" aria-required="true" aria-invalid="false" /></td>
+              </tr>
+              <tr>
+                <th>電話番号（半角）</th>
+                <td><input placeholder="電話番号" type="text" name="電話番号" size="40" aria-required="true" aria-invalid="false" /></td>
+              </tr>
+              <tr>
+                <th>Eメール</th>
+                <td><input placeholder="Eメール" type="email" name="Eメール" size="40" aria-required="true" aria-invalid="false" /></td>
+              </tr>
+            </table>
+            <p>すべての項目をご入力後、”入力内容の確認へ”ボタンを押してください。</p>
+            <div>
+              <input class="submit" type="submit" value="　 入力内容の確認へ 　" />
+            </div>
+            <p>お問い合わせ後、2~3営業日中に折り返しご連絡いたしますが、もし折り返しご連絡がない場合は、<br>
+              入力ミス等により連絡が取れなくなっていることが考えられます。<br>
+              お手数をお掛けしますが、再度お電話かお問い合わせフォームにてお問い合わせ下さい。</p>
+          </form>
+
+
+
+
+
+        </article>
+      </div>
+    </section>
+    <div class="pageTop" id="imgChange">
+      <a href="#header"><img src="./assets/images/cow.svg" alt="" width="100px" data-hover="cow-hover.svg"></a>
+    </div>
+  </main>
+  <footer id="footer" class="plex" data-justify="center" data-align="center">
+    <p>&copy; 2020- </p>
+  </footer> <!-- 相対パスを修正 -->
+
+</body>
+
+</html>
