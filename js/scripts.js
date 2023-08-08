@@ -2565,3 +2565,10 @@ jQuery(window).load(function () {
     jQuery('.before_after.twentytwenty-container').twentytwenty();
 
 });
+
+window.onload = function () {
+    const images = document.querySelectorAll('img');
+    images.forEach(function (img) {
+        img.setAttribute('loading', 'lazy');
+    });
+}
