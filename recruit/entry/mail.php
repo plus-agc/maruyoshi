@@ -38,7 +38,7 @@ $to = "maruyoshikougyo@gmail.com,yamauchi-t@plus-agc.com";
 //送信元メールアドレス（管理者宛て、及びユーザー宛メールの送信元メールアドレスです）
 //必ず実在するメールアドレスでかつ出来る限り設置先サイトのドメインと同じドメインのメールアドレスとすることを強く推奨します
 //管理者宛てメールの返信先（reply）はユーザーのメールアドレスになります。
-$from = "maruyoshikougyo@gmail.com,yamauchi-t@plus-agc.com";
+$from = "maruyoshikougyo@gmail.com";
 
 //フォームのメールアドレス入力箇所のname属性の値（name="○○"　の○○部分）
 $Email = "Eメール";
