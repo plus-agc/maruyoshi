@@ -724,22 +724,20 @@ if (($confirmDsp == 0 || $sendmail == 1) && $empty_flag != 1) {
             </script>
 
             <script>
-                jQuery(window).on("load", () => {
-                    const retina = window.devicePixelRatio > 1 ? true : false;
+                jQuery(window).load(function() {
+                    var retina = window.devicePixelRatio > 1 ? true : false;
                     if (retina) {
-                        const retinaEl = jQuery("#logo img.logo-main");
-                        const retinaLogoW = retinaEl.width();
-                        const retinaLogoH = retinaEl.height();
+                        var retinaEl = jQuery("#logo img.logo-main");
+                        var retinaLogoW = retinaEl.width();
+                        var retinaLogoH = retinaEl.height();
                         retinaEl.attr("src", "images/retina-tuning.png").width(retinaLogoW).height(retinaLogoH);
-
-                        const stickyEl = jQuery("#logo img.logo-sticky");
-                        const stickyLogoW = stickyEl.width();
-                        const stickyLogoH = stickyEl.height();
+                        var stickyEl = jQuery("#logo img.logo-sticky");
+                        var stickyLogoW = stickyEl.width();
+                        var stickyLogoH = stickyEl.height();
                         stickyEl.attr("src", "images/retina-tuning.png").width(stickyLogoW).height(stickyLogoH);
-
-                        const mobileEl = jQuery("#logo img.logo-mobile");
-                        const mobileLogoW = mobileEl.width();
-                        const mobileLogoH = mobileEl.height();
+                        var mobileEl = jQuery("#logo img.logo-mobile");
+                        var mobileLogoW = mobileEl.width();
+                        var mobileLogoH = mobileEl.height();
                         mobileEl.attr("src", "images/retina-tuning.png").width(mobileLogoW).height(mobileLogoH);
                     }
                 });
