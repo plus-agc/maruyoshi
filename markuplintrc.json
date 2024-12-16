@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "indentation": {
+      "value": 2,
+      "severity": "error"
+    },
+    "doctype": {
+      "severity": "error"
+    },
+    "attr-duplication": {
+      "severity": "error"
+    },
+    "attr-value-quotes": {
+      "severity": "error"
+    },
+    "element-name": {
+      "severity": "warning"
+    },
+    "id-duplication": {
+      "severity": "error"
+    },
+    "attr-spacing": {
+      "severity": "warning",
+      "option": {
+        "beforeEqual": false,
+        "afterEqual": true
+      }
+    }
+  },
+  "extends": ["markuplint:recommended"],
+  "parser": {
+    ".html": "@markuplint/html-parser"
+  }
+}

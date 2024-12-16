@@ -1,24 +1,25 @@
 {
   "name": "maruyoshi",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "bs-config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "browser-sync start --config bs-config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plus-agc-service-yamauchi/maruyoshi.git"
+    "url": "git+https://plus-agc@github.com/plus-web-dev-team/maruyoshi.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/plus-agc-service-yamauchi/maruyoshi/issues"
+    "url": "https://github.com/plus-web-dev-team/maruyoshi/issues"
   },
-  "homepage": "https://github.com/plus-agc-service-yamauchi/maruyoshi#readme",
+  "homepage": "https://github.com/plus-web-dev-team/maruyoshi#readme",
+  "description": "",
   "devDependencies": {
-    "browser-sync": "^2.26.2"
+    "browser-sync": "^3.0.3",
+    "markuplint": "^4.11.4"
   }
 }
