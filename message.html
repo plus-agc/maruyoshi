@@ -71,16 +71,27 @@
       .image-container {
         position: relative;
         width: 100%;
-        height: 850px;
+        height: 850px; /* コンテナの高さを明示 */
+        margin-bottom: 20px; /* 下の要素と重ならないようにマージンを追加 */
       }
+
       .image-container img {
         position: absolute;
         width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
         transition: opacity 3s ease-in-out;
       }
+
       #image2 {
         opacity: 0;
+      }
+
+      .text-content {
+        font-size: 1.5em;
+        text-align: center;
+        color: #333;
       }
     </style>
   </head>
@@ -249,7 +260,7 @@
                           </p>
                         </div>
                         <div class="column one">
-                          <div class="image-container">
+                          <div class="image-container" id="imageContainer">
                             <img
                               id="image1"
                               src="./images/fix/34.jpg"
@@ -426,10 +437,47 @@
       });
     </script>
     <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        setTimeout(() => {
-          document.getElementById("image2").style.opacity = 1;
-        }, 1000); // 1秒後に変化を開始
+      document.addEventListener("DOMContentLoaded", () => {
+        const imageContainer = document.getElementById("imageContainer");
+        const image2 = document.getElementById("image2");
+        let timer = null;
+
+        // Intersection Observerで要素が画面に入ったことを検知
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startScrollStopTimer();
+            } else {
+              resetImage();
+            }
+          });
+        });
+
+        observer.observe(imageContainer);
+
+        function startScrollStopTimer() {
+          window.addEventListener("scroll", resetTimer);
+
+          resetTimer(); // 初回タイマーセット
+
+          function resetTimer() {
+            if (timer) {
+              clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+              image2.style.opacity = 1;
+              window.removeEventListener("scroll", resetTimer); // 一度実行したらリスナーを削除
+            }, 2000); // 2秒間スクロールが止まったらアニメーション開始
+          }
+        }
+
+        function resetImage() {
+          image2.style.opacity = 0; // 元の画像に戻す
+          if (timer) {
+            clearTimeout(timer);
+          }
+          window.removeEventListener("scroll", resetTimer);
+        }
       });
     </script>
   </body>
