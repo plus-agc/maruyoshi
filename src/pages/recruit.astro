@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import headerHtml from "../partials/main/recruit-header.html?raw";
+import contentHtml from "../partials/main/recruit-content.html?raw";
+import scriptsHtml from "../partials/main/recruit-scripts.html?raw";
+
+const title = "採用情報 | 有限会社まるよし工業";
+const description =
+  "まるよし工業はこれまでの仕事で得た経験や技術を活かし、思う存分働きたい。そんな熱い思いを胸に秘める経験豊かな人材を求めています。また平成30年より、新卒採用の実施をスタート。若い人材の確保と育成に注力しています。";
+const bodyClass =
+  "style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders";
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  bodyClass={bodyClass}
+  includeRsPluginCss={false}
+  headerHtml={headerHtml}
+  contentHtml={contentHtml}
+  scriptsHtml={scriptsHtml}
+  footerCurrent="recruit"
+/>

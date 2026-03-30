@@ -1,0 +1,94 @@
+---
+export type FooterNavId = "home" | "business" | "recruit" | "about" | "contact";
+
+interface Props {
+  current: FooterNavId;
+}
+
+const { current } = Astro.props;
+
+/** 各項目がアクティブのときのクラス（current-menu-item 付き） */
+const active: Record<FooterNavId, string> = {
+  home: "menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-5",
+  business:
+    "menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-2219",
+  recruit:
+    "menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-2217",
+  about:
+    "menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-2217",
+  contact:
+    "menu-item menu-item-_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-2216",
+};
+/** 非アクティブ時の WordPress 由来クラス（元 HTML と同型） */
+const nav = {
+  home: "menu-item menu-item-_type menu-item-object-page menu-item-5",
+  business: "menu-item menu-item-_type menu-item-object-page menu-item-2219",
+  recruit: "menu-item menu-item-_type menu-item-object-page menu-item-2217",
+  about: "menu-item menu-item-_type menu-item-object-page menu-item-2217",
+  contact: "menu-item menu-item-_type menu-item-object-page menu-item-2216",
+} as const;
+---
+
+<!-- Footer-->
+<footer id="Footer" class="clearfix">
+  <div class="widgets_wrapper">
+    <div class="container">
+      <div class="column two-third">
+        <aside id="nav_menu-2" class="widget widget_nav_menu">
+          <div class="menu-main-menu-container">
+            <ul id="menu-main-menu-1" class="menu">
+              <li class={current === "home" ? active.home : nav.home}>
+                <a href="/">ホーム</a>
+              </li>
+              <li class={current === "business" ? active.business : nav.business}>
+                <a href="/business.html">事業内容</a>
+              </li>
+              <li class={current === "recruit" ? active.recruit : nav.recruit}>
+                <a href="/recruit.html">採用情報</a>
+              </li>
+              <li class={current === "about" ? active.about : nav.about}>
+                <a href="/about-us.html">会社情報</a>
+              </li>
+              <li class={current === "contact" ? active.contact : nav.contact}>
+                <a href="/contact.html">お問い合わせ</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <aside class="widget widget_text">
+          <div class="textwidget">
+            <div
+              class="image_frame image_item no_link scale-with-grid alignnone no_border"
+            >
+              <div class="image_wrapper">
+                <img
+                  class="scale-with-grid"
+                  src="/images/home_tuning_sep4.png"
+                  alt=""
+                  width="88"
+                  height="1"
+                />
+              </div>
+            </div>
+            <hr class="no_line hrmargin_b_20" />
+            <p>All Rights Reserved© 有限会社まるよし工業</p>
+          </div>
+        </aside>
+      </div>
+      <div class="column one-third">
+        <aside class="widget widget_text">
+          <div class="textwidget">
+            <div
+              style="
+                      background: #ff0000;
+                      text-align: right;
+                      padding: 100px 50px 50px 50px;
+                    "
+            >
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</footer>

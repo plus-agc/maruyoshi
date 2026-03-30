@@ -1,0 +1,7 @@
+{
+  "extends": ["markuplint:recommended"],
+  "parser": {
+    ".astro": "@markuplint/astro-parser"
+  },
+  "excludeFiles": ["./legacy-html/**", "./node_modules/**", "./dist/**"]
+}

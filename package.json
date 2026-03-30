@@ -1,10 +1,14 @@
 {
   "name": "maruyoshi",
   "version": "1.0.0",
-  "main": "bs-config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "browser-sync start --config bs-config.js"
+    "postinstall": "node scripts/patch-astrojs-sitemap.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint:html": "markuplint \"src/**/*.astro\""
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,12 @@
   "homepage": "https://github.com/plus-web-dev-team/maruyoshi#readme",
   "description": "",
   "devDependencies": {
-    "browser-sync": "^3.0.3",
+    "@astrojs/sitemap": "^3.7.2",
+    "@markuplint/astro-parser": "^4.6.23",
+    "astro": "^4.16.19",
     "markuplint": "^4.11.4"
+  },
+  "overrides": {
+    "minimatch": "^10.2.3"
   }
 }

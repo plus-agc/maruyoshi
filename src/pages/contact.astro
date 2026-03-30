@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import headerHtml from "../partials/main/contact-header.html?raw";
+import contentHtml from "../partials/main/contact-content.html?raw";
+import scriptsHtml from "../partials/main/contact-scripts.html?raw";
+
+const title = "お問い合わせ | 有限会社まるよし工業";
+const description =
+  "秋田市の鐵骨加工業、有限会社まるよし工業へのお問い合わせはTEL018-883-0750。お問い合わせフォームはこちらから";
+const bodyClass =
+  "style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders";
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  bodyClass={bodyClass}
+  includeRsPluginCss={false}
+  headerHtml={headerHtml}
+  contentHtml={contentHtml}
+  scriptsHtml={scriptsHtml}
+  footerCurrent="contact"
+/>

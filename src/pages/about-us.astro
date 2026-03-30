@@ -1,0 +1,30 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import headerHtml from "../partials/main/about-us-header.html?raw";
+import contentHtml from "../partials/main/about-us-content.html?raw";
+import scriptsHtml from "../partials/main/about-us-scripts.html?raw";
+
+const title = "会社案内 | 有限会社まるよし工業";
+const description = `会社名　有限会社 まるよし工業
+住所
+〒010-1601 秋田市向浜一丁目6番6号
+電話番号
+018-883-0750
+FAX
+018-883-0720
+代表者
+工藤 喜一`;
+const bodyClass =
+  "style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders";
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  bodyClass={bodyClass}
+  includeRsPluginCss={false}
+  headerHtml={headerHtml}
+  contentHtml={contentHtml}
+  scriptsHtml={scriptsHtml}
+  footerCurrent="about"
+/>

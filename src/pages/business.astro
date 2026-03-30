@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import headerHtml from "../partials/main/business-header.html?raw";
+import contentHtml from "../partials/main/business-content.html?raw";
+import scriptsHtml from "../partials/main/business-scripts.html?raw";
+
+const title = "事業内容 | 有限会社まるよし工業";
+const description =
+  "まるよし工業が手がけるのは、建築物を支える骨組み部分。微細な誤差も許されない完成度を求められる重要な部分です。その品質を支えているのは熟練工を中心にした揺るぎない技術と、正確な図面を描くCADの存在です。";
+const bodyClass =
+  "style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders";
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  bodyClass={bodyClass}
+  includeRsPluginCss={false}
+  headerHtml={headerHtml}
+  contentHtml={contentHtml}
+  scriptsHtml={scriptsHtml}
+  footerCurrent="business"
+/>

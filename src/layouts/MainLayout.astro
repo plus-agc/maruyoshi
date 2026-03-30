@@ -1,0 +1,120 @@
+---
+import { Fragment } from "astro/jsx-runtime";
+import type { FooterNavId } from "./MainFooter.astro";
+import MainFooter from "./MainFooter.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  /** メインテーマ body のクラス（ページごとに異なる） */
+  bodyClass: string;
+  /** トップの Revolution Slider 用 CSS */
+  includeRsPluginCss?: boolean;
+  headerHtml: string;
+  contentHtml: string;
+  scriptsHtml: string;
+  footerCurrent: FooterNavId;
+}
+
+const {
+  title,
+  description,
+  bodyClass,
+  includeRsPluginCss = false,
+  headerHtml,
+  contentHtml,
+  scriptsHtml,
+  footerCurrent,
+} = Astro.props;
+---
+
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 "> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>
+<html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ja" class="no-js">
+  <!--<![endif]-->
+  <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5Z75X54");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,400italic,500,700,900"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Orbitron:300,400,400italic,500,700,900"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Ubuntu:100,400,400italic,500,700"
+    />
+    <link rel="stylesheet" href="/css/global.css" media="all" />
+    <link rel="stylesheet" href="/css/structure.css" media="all" />
+    <link rel="stylesheet" href="/css/tuning.css" media="all" />
+    <link rel="stylesheet" href="/css/custom.css" media="all" />
+    {
+      includeRsPluginCss && (
+        <link rel="stylesheet" href="/plugins/rs-plugin/css/settings.css" />
+      )
+    }
+  </head>
+  <body class={bodyClass}>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        title="Google Tag Manager"
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5Z75X54"
+        height="0"
+        width="0"
+        loading="lazy"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="Wrapper">
+      <Fragment set:html={headerHtml} />
+      <Fragment set:html={contentHtml} />
+      <MainFooter current={footerCurrent} />
+    </div>
+    <Fragment set:html={scriptsHtml} />
+  </body>
+</html>

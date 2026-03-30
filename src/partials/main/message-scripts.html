@@ -1,0 +1,79 @@
+    <!-- JS -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/mfn.menu.js"></script>
+    <script src="/js/jquery.plugins.js"></script>
+    <script src="/js/jquery.jplayer.min.js"></script>
+    <script src="/js/animations/animations.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script>
+      jQuery(window).load(function () {
+        var retina = window.devicePixelRatio > 1 ? true : false;
+        if (retina) {
+          var retinaEl = jQuery("#logo img.logo-main");
+          var retinaLogoW = retinaEl.width();
+          var retinaLogoH = retinaEl.height();
+          retinaEl
+            .attr("src", "images/retina-tuning.png")
+            .width(retinaLogoW)
+            .height(retinaLogoH);
+          var stickyEl = jQuery("#logo img.logo-sticky");
+          var stickyLogoW = stickyEl.width();
+          var stickyLogoH = stickyEl.height();
+          stickyEl
+            .attr("src", "images/retina-tuning.png")
+            .width(stickyLogoW)
+            .height(stickyLogoH);
+          var mobileEl = jQuery("#logo img.logo-mobile");
+          var mobileLogoW = mobileEl.width();
+          var mobileLogoH = mobileEl.height();
+          mobileEl
+            .attr("src", "images/retina-tuning.png")
+            .width(mobileLogoW)
+            .height(mobileLogoH);
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const imageContainer = document.getElementById("imageContainer");
+        const image2 = document.getElementById("image2");
+        let timer = null;
+
+        // Intersection Observerで要素が画面に入ったことを検知
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startScrollStopTimer();
+            } else {
+              resetImage();
+            }
+          });
+        });
+
+        observer.observe(imageContainer);
+
+        function startScrollStopTimer() {
+          window.addEventListener("scroll", resetTimer);
+
+          resetTimer(); // 初回タイマーセット
+
+          function resetTimer() {
+            if (timer) {
+              clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+              image2.style.opacity = 1;
+              window.removeEventListener("scroll", resetTimer); // 一度実行したらリスナーを削除
+            }, 2000); // 2秒間スクロールが止まったらアニメーション開始
+          }
+        }
+
+        function resetImage() {
+          image2.style.opacity = 0; // 元の画像に戻す
+          if (timer) {
+            clearTimeout(timer);
+          }
+          window.removeEventListener("scroll", resetTimer);
+        }
+      });
+    </script>

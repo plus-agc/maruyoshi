@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import headerHtml from "../partials/main/thanks-header.html?raw";
+import contentHtml from "../partials/main/thanks-content.html?raw";
+import scriptsHtml from "../partials/main/thanks-scripts.html?raw";
+
+const title = "送信完了 | 有限会社まるよし工業";
+const description =
+  "お問い合わせありがとうございます。Eメールの送信が完了いたしました。";
+const bodyClass =
+  "style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders";
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  bodyClass={bodyClass}
+  includeRsPluginCss={false}
+  headerHtml={headerHtml}
+  contentHtml={contentHtml}
+  scriptsHtml={scriptsHtml}
+  footerCurrent="contact"
+/>

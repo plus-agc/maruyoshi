@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import headerHtml from "../partials/main/index-header.html?raw";
+import contentHtml from "../partials/main/index-content.html?raw";
+import scriptsHtml from "../partials/main/index-scripts.html?raw";
+
+const title = "有限会社まるよし工業 | 秋田県秋田市の鐵鋼会社 Mグレード取得";
+const description =
+  "昭和48年創業のまるよし工業は、鐵骨加工を手がける会社として、50年近い長きに渡り秋田の建設業界で活躍してきました。昭和、平成、そして令和。３つの時代を駆け抜けながら、秋田に拠点を置く企業としてこれからも県内外の鐵骨加工業の一翼を担っていきます。";
+const bodyClass =
+  "template-slider style-simple layout-full-width mobile-tb-left if-overlay no-content-padding header-classic header-fw minimalist-header sticky-header sticky-white ab-hide subheader-title-left menu-line-below menuo-right menuo-no-borders";
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  bodyClass={bodyClass}
+  includeRsPluginCss={true}
+  headerHtml={headerHtml}
+  contentHtml={contentHtml}
+  scriptsHtml={scriptsHtml}
+  footerCurrent="home"
+/>
