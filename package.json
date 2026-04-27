@@ -26,7 +26,7 @@
     "@astrojs/sitemap": "^3.7.2",
     "@markuplint/astro-parser": "^4.6.23",
     "astro": "^4.16.19",
-    "markuplint": "^4.11.4"
+    "markuplint": "^4.18.1"
   },
   "overrides": {
     "minimatch": "^10.2.3"
