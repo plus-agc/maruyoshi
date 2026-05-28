@@ -23,9 +23,9 @@
   "homepage": "https://github.com/plus-web-dev-team/maruyoshi#readme",
   "description": "",
   "devDependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@markuplint/astro-parser": "^4.6.23",
-    "astro": "^4.16.19",
+    "astro": "^6.3.8",
     "markuplint": "^4.11.4"
   },
   "overrides": {
