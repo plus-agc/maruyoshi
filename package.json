@@ -24,11 +24,13 @@
   "description": "",
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@markuplint/astro-parser": "^4.6.23",
-    "astro": "^6.3.8",
-    "markuplint": "^4.11.4"
+    "@markuplint/astro-parser": "^4.18.3",
+    "astro": "^6.4.6",
+    "markuplint": "^4.18.3"
   },
   "overrides": {
-    "minimatch": "^10.2.3"
+    "minimatch": "^10.2.3",
+    "esbuild": "^0.28.1",
+    "uuid": "^13.0.2"
   }
 }
