@@ -31,6 +31,10 @@
   "overrides": {
     "minimatch": "^10.2.3",
     "esbuild": "^0.28.1",
-    "uuid": "^13.0.2"
+    "uuid": "^13.0.2",
+    "js-yaml": "^4.3.0",
+    "brace-expansion": "^5.0.7",
+    "svgo": "^4.0.2",
+    "sharp": "^0.35.0"
   }
 }
