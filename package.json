@@ -35,6 +35,7 @@
     "js-yaml": "^4.3.1",
     "brace-expansion": "^5.0.7",
     "svgo": "^4.0.2",
-    "sharp": "^0.35.0"
+    "sharp": "^0.35.0",
+    "postcss-selector-parser": "7.1.3"
   }
 }
