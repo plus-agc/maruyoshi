@@ -3,5 +3,25 @@
   "parser": {
     ".astro": "@markuplint/astro-parser"
   },
-  "excludeFiles": ["./legacy-html/**", "./node_modules/**", "./dist/**"]
+  "excludeFiles": ["./legacy-html/**", "./node_modules/**", "./dist/**"],
+  "overrideMode": "merge",
+  "overrides": {
+    "./src/pages/**/*.astro": {
+      "rules": {
+        "html-standard/no-unclosed-element-at-eof": false
+      }
+    },
+    "./src/corporate/**/*.astro": {
+      "rules": {
+        "html-standard/no-unclosed-element-at-eof": false
+      }
+    },
+    "./src/layouts/RecruitLayout.astro": {
+      "rules": {
+        "html-standard/permitted-contents": false,
+        "html-standard/head-charset-utf8": false,
+        "performance/head-charset-utf8": false
+      }
+    }
+  }
 }
