@@ -28,7 +28,7 @@
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@markuplint/astro-parser": "^5.2.0",
-    "astro": "7.3.8",
+    "astro": "7.4.0",
     "markuplint": "^5.2.0"
   },
   "overrides": {
