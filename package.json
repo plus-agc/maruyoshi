@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "@markuplint/astro-parser": "^5.2.0",
+    "@markuplint/astro-parser": "^5.3.0",
     "astro": "7.4.2",
     "markuplint": "^5.2.0"
   },
